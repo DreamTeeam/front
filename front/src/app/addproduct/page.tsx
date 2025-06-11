@@ -1,4 +1,4 @@
-import RegisterProductUI from "@/app/AddProduct/components/RegisterProductUI";
+import RegisterProductUI from "@/app/addproduct/components/RegisterProductUI";
 import React from "react";
 
 const addProductPage = () => {
