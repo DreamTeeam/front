@@ -5,8 +5,9 @@ import * as yup from "yup";
 import { ButtonAccent } from "@/components/ui/Buttons/Buttons";
 import dynamic from "next/dynamic";
 import toast from "react-hot-toast";
-import CloudinaryButton from "@/components/UI/Buttons/CloudinaryButton";
+import CloudinaryButton from "../../../../components/ui/Buttons/CloudinaryButton";
 import InputFormik from "@/components/ui/Inputs/InputFormik";
+import Image from "next/image";
 
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
@@ -43,6 +44,7 @@ const subCategorySchema = yup.object().shape({
     .string()
     .required("La imagen es obligatoria"),
 });
+
 
 const RegisterSubCategory = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -105,7 +107,7 @@ const RegisterSubCategory = () => {
                   />
                   {values.image && (
                     <div className="mt-4">
-                      <img
+                      <Image
                         src={values.image}
                         alt="Preview"
                         className="w-40 h-40 object-cover border rounded"

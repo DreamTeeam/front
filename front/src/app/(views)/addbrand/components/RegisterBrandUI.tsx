@@ -6,8 +6,9 @@ import dynamic from "next/dynamic";
 import React, { useRef } from "react";
 import toast from "react-hot-toast";
 import { ButtonAccent } from "@/components/ui/Buttons/Buttons";
-import CloudinaryButton from "@/components/UI/Buttons/CloudinaryButton";
+import CloudinaryButton from "@/components/ui/Buttons/CloudinaryButton";
 import InputFormik from "@/components/ui/Inputs/InputFormik";
+import Image from "next/image";
 
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
@@ -106,7 +107,7 @@ const RegisterBrand = () => {
                   />
                   {values.image && (
                     <div className="mt-4">
-                      <img
+                      <Image
                         src={values.image}
                         alt="Preview"
                         className="w-40 h-40 object-cover border rounded"

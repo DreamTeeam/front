@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { ButtonAccent } from "../../../../components/ui/Buttons/Buttons";
 import toast from "react-hot-toast";
-import CloudinaryButton from "@/components/UI/Buttons/CloudinaryButton";
+import CloudinaryButton from "../../../../components/ui/Buttons/CloudinaryButton";
 import InputFormik from "@/components/ui/Inputs/InputFormik";
 
 const categorySchema = yup.object().shape({

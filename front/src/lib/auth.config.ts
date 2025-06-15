@@ -33,6 +33,6 @@ export const authConfig: NextAuthOptions = {
     },
   },
   session: {
-    strategy: "jwt", // Simple y no dependés de DB
+    strategy: "jwt",
   },
 };

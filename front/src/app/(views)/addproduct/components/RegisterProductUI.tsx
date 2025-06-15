@@ -4,8 +4,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import { ButtonAccent } from "../../../../components/ui/Buttons/Buttons";
 import toast from "react-hot-toast";
-import CloudinaryButton from "@/components/UI/Buttons/CloudinaryButton";
+import CloudinaryButton from "../../../../components/ui/Buttons/CloudinaryButton";
 import InputFormik from "@/components/ui/Inputs/InputFormik";
+import Image from "next/image";
 
 const productoSchema = yup.object().shape({
   nombre: yup
@@ -84,7 +85,7 @@ const RegisterProduct = () => {
         onSubmit={(values, { resetForm }) => {
           console.log("Producto a registrar:", values);
           // Llamada a api
-          toast.success("Producto registrado correctamente ✅");
+          toast.success("Producto registrado correctamente");
 
           resetForm();
 
@@ -134,7 +135,7 @@ const RegisterProduct = () => {
                   />
                   {values.image && (
                     <div className="mt-4">
-                      <img
+                      <Image
                         src={values.image}
                         alt="Preview"
                         className="w-40 h-40 object-cover border rounded"
