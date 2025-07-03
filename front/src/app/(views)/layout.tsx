@@ -15,7 +15,7 @@ export default function ViewsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isInitialized, fetchUser, setInitialized } = useAuthStore();
+  const { isInitialized} = useAuthStore();
   const pathname = usePathname();
   const [isRouting, setIsRouting] = useState(false);
 
@@ -32,17 +32,6 @@ export default function ViewsLayout({
 
   const isChatRoom = pathname === "/user/chat";
   const isDetailProduct = pathname.startsWith("/shop/products/");
-
-  useEffect(() => {
-    const init = async () => {
-      if (!isInitialized) {
-        await fetchUser();
-        setInitialized(true);
-      }
-    };
-    init();
-  }, [isInitialized, fetchUser, setInitialized]);
-
 
   useEffect(() => {
     setIsRouting(true);
