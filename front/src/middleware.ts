@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { routes } from "./app/routes";
 
 // Rutas públicas que no requieren autenticación
 const PUBLIC_PATHS = [
@@ -26,7 +27,7 @@ export async function middleware(req: NextRequest) {
   // Si no hay token, redirigir al login (solo para rutas no públicas)
   const token = req.cookies.get("access_token")?.value;
   if (!token) {
-    return NextResponse.redirect(new URL("/login", req.url));
+    return NextResponse.redirect(new URL(routes.public.login, req.url));
   }
 
   // Si hay token, seguir normalmente

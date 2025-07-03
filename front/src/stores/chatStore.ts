@@ -3,6 +3,9 @@ import { create } from "zustand";
 import { io, Socket } from "socket.io-client";
 import { useAuthStore } from "./authStore";
 
+
+export type { ChatStore };
+
 // --- Tipos de Datos ---
 type ChatMessage = {
   user: string;
