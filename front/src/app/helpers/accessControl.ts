@@ -1,11 +1,8 @@
-import { routes } from "../routes/index";
+import { routes } from "../routes";
 import { IAuthMeUser } from "@/interfaces";
 
 export const accessByRole: Record<string, string[]> = {
-  CLIENT: [
-    routes.client.profileClient,
-    routes.client.subscription,
-  ],
+  CLIENT: [routes.client.subscription, routes.user.profile],
   CASHIER: [
     routes.user.profile,
     routes.user.reports,

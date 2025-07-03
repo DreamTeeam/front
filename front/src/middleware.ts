@@ -1,49 +1,3 @@
-// import { NextRequest, NextResponse } from "next/server";
-// import { routes } from "./app/routes";
-
-// // Rutas públicas que no requieren autenticación
-// const PUBLIC_PATHS = [
-//   "/",
-//   "/login",
-//   "/registerclient",
-//   "/loginclient",
-//   "/shop",             // <<< Agregado: deja entrar a /shop
-//   "/shop/categories",  // <<< Agregado: deja entrar directo a categorías
-// ];
-
-// // Middleware
-// export async function middleware(req: NextRequest) {
-//   const { pathname } = req.nextUrl;
-
-//   // Si la ruta comienza con una ruta pública, permitir el acceso
-//   const isPublic = PUBLIC_PATHS.some((r) =>
-//     pathname === r || pathname.startsWith(r + "/")
-//   );
-
-//   if (isPublic) {
-//     return NextResponse.next();
-//   }
-
-//   // Si no hay token, redirigir al login (solo para rutas no públicas)
-//   const token = req.cookies.get("access_token")?.value;
-//   if (!token) {
-//     return NextResponse.redirect(new URL(routes.public.login, req.url));
-//   }
-
-//   // Si hay token, seguir normalmente
-//   return NextResponse.next();
-// }
-
-// // Config: ignorar rutas estáticas y APIs
-// export const config = {
-//   matcher: [
-//     "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|gif)).*)",
-//   ],
-// };
-
-
-
-
 import { NextRequest, NextResponse } from "next/server";
 import { accessControl } from "./app/helpers/accessControl";
 import { routes } from "./app/routes";
@@ -53,7 +7,7 @@ import { IAuthMeUser } from "./interfaces";
 // Verifica y decodifica el token JWT
 async function verifyToken(token: string): Promise<IAuthMeUser | null> {
   try {
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+    const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
     const { payload } = await jwtVerify(token, secret);
     return payload as unknown as IAuthMeUser;
   } catch (error) {
@@ -64,9 +18,7 @@ async function verifyToken(token: string): Promise<IAuthMeUser | null> {
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-console.log("Cookies:", req.cookies);
-const token = req.cookies.get("access_token")?.value;
-console.log("Access token:", token);
+  const token = req.cookies.get("access_token")?.value;
 
   const isPublic = accessControl.publicRoutes.some((r) => {
   if (r === '/') {
@@ -127,7 +79,5 @@ console.log("Access token:", token);
 
 // Ignora assets estáticos y APIs
 export const config = {
-  matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|gif)).*)",
-  ],
+  matcher: ["/((?!_next|api|favicon.ico|assets|public).*)"],
 };
