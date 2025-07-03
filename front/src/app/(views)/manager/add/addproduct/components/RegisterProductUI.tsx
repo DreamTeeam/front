@@ -305,7 +305,7 @@ validationSchema={productoSchemaCompleto}
               <div className="flex justify-center md:justify-end mt-6 px-4 sm:px-6 lg:px-10">
                 <ButtonAccent type="submit" textContent="GUARDAR" onClick={async (e) => {
             e.preventDefault(); // Evitás que envíe el form sin control
-            const errors = await validateForm();
+            await validateForm();
 
             if (!isValid) {
               toast.error("Por favor, completá todos los campos obligatorios, incluyendo las variantes.");

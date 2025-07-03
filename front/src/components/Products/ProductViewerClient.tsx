@@ -61,6 +61,8 @@ const ProductViewerClient: React.FC<Props> = ({
     }
   };
 
+  
+
   const toggleSize = (sizeId: string) => {
     setSelectedSizes(prev =>
       prev.includes(sizeId)

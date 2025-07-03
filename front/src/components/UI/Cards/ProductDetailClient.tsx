@@ -42,6 +42,12 @@ const ProductDetailClient: React.FC<Props> = ({ product, sizes, colors }) => {
             .join(" - ");
     };
 
+    const getColorHexCode = (id: string): string => {
+    const color = colors.find((c) => c.id === id);
+    // Devuelve un color por defecto si no se encuentra
+    return color ? color.name.toLowerCase() : "#cccccc";
+};
+
 
     const getColorLabel = (id: string): string => {
         const color = colors.find((c) => c.id === id);
@@ -65,6 +71,7 @@ const ProductDetailClient: React.FC<Props> = ({ product, sizes, colors }) => {
                     }}
                     variants={product?.variants ?? []}
                     getColorLabel={getColorLabel}
+                    getColorHexCode={getColorHexCode}
                     getSizeLabel={getSizeLabel}
                 />
             </div>

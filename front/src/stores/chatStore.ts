@@ -13,6 +13,7 @@ type ChatMessage = {
 type ChatStore = {
   socket: Socket | null;
   messages: Record<string, ChatMessage[]>;
+  unreadMessagesCount: number; 
   connect: (tenantSlug: string) => void;
   disconnect: () => void;
   joinRoom: (room: string) => void;
@@ -27,6 +28,7 @@ let socket: Socket | null = null;
 export const useChatStore = create<ChatStore>((set) => ({
   socket: null,
   messages: {},
+  unreadMessagesCount: 0,
 
   connect: (tenantSlug) => {
     if (socket?.connected) {
@@ -40,7 +42,7 @@ export const useChatStore = create<ChatStore>((set) => ({
     }
 
     // Asignamos a la variable externa, SIN 'const'
-    socket = io("http://localhost:8080", {
+    socket = io("https://nivo-app.onrender.com", {
       withCredentials: true,
       auth: { tenantSlug },
       transports: ["websocket", "polling"],
