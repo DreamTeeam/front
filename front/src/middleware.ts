@@ -24,6 +24,7 @@ async function verifyToken(token: string): Promise<IAuthMeUser | null> {
 }
 
 export async function middleware(req: NextRequest) {
+  console.log("⚡️ Middleware ejecutado");
   const { pathname } = req.nextUrl;
   const token = req.cookies.get("access_token")?.value;
 
@@ -94,9 +95,7 @@ export async function middleware(req: NextRequest) {
 
 // ⚙️ Ignora assets estáticos y APIs
 export const config = {
-  matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|jpg|gif)).*)",
-  ],
+  matcher: "/:path*",
 };
 
 
