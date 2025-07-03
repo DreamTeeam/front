@@ -2,7 +2,6 @@ import React from "react";
 import { RegisterFormClient } from "../../../components/Auth/Client/RegisterFormClientUI";
 import Link from "next/link";
 import { routes } from "../../routes/index";
-import Image from "next/image";
 
 const LoginPageClient = () => {
   return (
@@ -17,13 +16,7 @@ const LoginPageClient = () => {
             <p className="text-lg">
               ¡Registrate y accedé a todos los beneficios que ofrece Nivo!
             </p>
-            <Image
-              src="/bgregister.webp"
-              alt="Ilustración financiera"
-              width={600}
-              height={600}
-              className="mx-auto mt-8"
-            />
+
           </div>
         </div>
       </div>

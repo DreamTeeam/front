@@ -2,7 +2,6 @@ import React from "react";
 import LoginForm from "../components/Auth/Employee/LoginFormUI";
 import Link from "next/link";
 import { routes } from "./routes";
-import Image from "next/image";
 
 const LoginPage = () => {
   return (
@@ -18,13 +17,7 @@ const LoginPage = () => {
             <p className="text-lg">
               Iniciá sesión para acceder a la app Empresa
             </p>
-            <Image
-              src="/bgclienttt.webp"
-              alt="Ilustración financiera"
-              width={500}
-              height={500}
-              className="mx-auto mt-8"
-            />
+            
           </div>
         </div>
       </div>
