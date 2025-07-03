@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { accessControl } from "./app/helpers/accessControl";
-import { routes } from "./app/routes";
+import { accessControl } from "./src/app/helpers/accessControl";
+import { routes } from "./src/app/routes";
 import { jwtVerify } from "jose";
-import { IAuthMeUser } from "./interfaces";
+import { IAuthMeUser } from "./src/interfaces/index";
 
 // 🔐 Verifica y decodifica el token JWT
 async function verifyToken(token: string): Promise<IAuthMeUser | null> {
