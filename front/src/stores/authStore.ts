@@ -23,15 +23,12 @@ interface AuthState {
   loading: boolean;
   isInitialized: boolean;
   setInitialized: (value: boolean) => void;
-  // setters
   setUser: (user: IAuthMeUser | null) => void;
   fetchUser: () => Promise<void>;
   login: (type: UserType, credentials: ILogin) => Promise<void>;
   logout: () => Promise<void>;
   registerClient: (data: IRegister) => Promise<void>;
   registerEmployee: (data: IRegisterEmployee) => Promise<void>;
-
-  // helpers
   hasRole: (role: string) => boolean;
   isClient: () => boolean;
   isEmployee: () => boolean;
@@ -58,7 +55,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  login: async (type: UserType, credentials: ILogin) => {
+  login: async (type, credentials) => {
     if (type === "employee") await loginApi(credentials);
     else await loginClientApi(credentials);
 
@@ -88,8 +85,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     await registerApi(data);
   },
 
-  // helpers:
-  hasRole: (role: string) => {
+  hasRole: (role) => {
     return get().user?.roles?.includes(role.toUpperCase()) ?? false;
   },
 
