@@ -7,7 +7,7 @@ import { IAuthMeUser } from "./interfaces";
 // Verifica y decodifica el token JWT
 async function verifyToken(token: string): Promise<IAuthMeUser | null> {
   try {
-    const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
     const { payload } = await jwtVerify(token, secret);
     return payload as unknown as IAuthMeUser;
   } catch (error) {
