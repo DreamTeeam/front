@@ -36,7 +36,6 @@ const brandSchema = yup.object().shape({
     .min(1, "Selecciona al menos una Sub-Categoría")
     .of(yup.string().required()),
 
-  image: yup.string().required("La imagen es obligatoria"),
 });
 
 const RegisterBrand = () => {
@@ -138,8 +137,7 @@ const RegisterBrand = () => {
                         setFieldValue("image", url)
                       }
                     />
-                    {values.image && (
-                      <div className="w-40 h-40 relative border rounded overflow-hidden mt-4 mx-auto lg:mx-0">
+                      <div className="w-40 h-40 relative border rounded overflow-hidden mt-4">
                         <Image
                           src={values.image}
                           alt="Preview"
@@ -147,7 +145,6 @@ const RegisterBrand = () => {
                           className="object-cover"
                         />
                       </div>
-                    )}
                     <ErrorMessage
                       name="image"
                       component="div"
