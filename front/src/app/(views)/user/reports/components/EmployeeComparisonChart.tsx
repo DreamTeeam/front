@@ -20,8 +20,10 @@ export default function EmployeeComparisonChart() {
         fetchSalesByEmployee(format(weekAgo), format(today)).then(data => {
             setLabels(data.map((emp: any) => `${emp.firstName}`));
             setSeries(data.map((emp: any) => emp.totalSales));
-            console.log("Comparacion empleados: ", data);
-            
+
+            setTimeout(() => {
+                window.dispatchEvent(new Event("resize"));
+            }, 100);
         });
     }, []);
 

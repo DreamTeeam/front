@@ -123,7 +123,7 @@ const ProductViewerClient: React.FC<Props> = ({
           <Image src={selectedImage} alt={product.name} fill className="object-cover" />
         </div>
 
-        <h1 className="text-3xl font-bold text-secondary">{product.name}</h1>
+        <h1 className="text-3xl font-bold text-secondary uppercase">{product.name}</h1>
         <p className="text-gray-600">{product.description}</p>
         <p className="text-2xl font-semibold text-primary">${product.sale_price}</p>
 

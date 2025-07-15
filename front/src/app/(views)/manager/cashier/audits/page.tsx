@@ -7,6 +7,7 @@ import { ButtonAccent } from "@/components/UI/Buttons/Buttons";
 import toast from "react-hot-toast";
 import { useAuthStore } from "@/stores/authStore";
 import { routes } from "@/app/routes";
+import Swal from "sweetalert2";
 
 const CreateAudit = () => {
   const router = useRouter();
@@ -33,9 +34,23 @@ const CreateAudit = () => {
         total_cash: parseFloat(total_cash),
         employeeId: user.userId,
       });
+
+      setDescription("");
+      setTotalCash("");
       
-      toast.success("Arqueo creado correctamente.")
-      router.push(routes.manager.cashier.audits);
+      Swal.fire({
+        title: "¡Arqueo creado correctamente!",
+        text: "¿Desea ir a la sección de CORTES ahora?",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonText: "Sí, ir a CORTES",
+        cancelButtonText: "No, permanecer aquí",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          router.push(routes.manager.cashier.cuts); // 👈 Redirige
+        }
+      });
+
     } catch (err: any) {
       console.error("Error al crear arqueo:", err);
       if (err.response && err.response.data && Array.isArray(err.response.data.message)) {
@@ -46,8 +61,6 @@ const CreateAudit = () => {
       }
     }
   };
-
-
 
     
   return (

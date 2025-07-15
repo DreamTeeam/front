@@ -17,6 +17,12 @@ const Profile = () => {
 
   const [loading, setLoading] = useState(true);
 
+  // Lógica de los f*roles para los botones.
+  const roles = user?.roles || [];
+  const isAdmin = roles.includes("ADMIN");
+  const isClient = roles.includes("CLIENT");
+  const subscriptionButtons = isAdmin || isClient;
+
   useEffect(() => {
     const init = async () => {
       if (!isInitialized) {
@@ -46,18 +52,25 @@ const Profile = () => {
           <p><strong className="text-gray-700">Roles:</strong> {user.roles?.join(", ")}</p>
         </div>
 
-        <div className="grid gap-10 w-auto max-w-50">
-          <ButtonSecondary
-            textContent="Ver suscripciones de empresa"
-            onClick={() => router.push(routes.user.companysubscription)}
-          />
+        {subscriptionButtons && (
+          <div className="grid gap-10 w-auto max-w-50">
+            <ButtonSecondary
+              textContent="Ver suscripciones disponibles"
+              onClick={() =>
+                router.push(
+                  isAdmin
+                    ? routes.user.companysubscription
+                    : routes.user.clientsubscription
+                )
+              }
+            />
 
-          <ButtonPrimary
-            textContent="Cancelar suscripción"
-            onClick={() => router.push(routes.payment.unsubscribe)}
-          />
-          
-        </div>
+            <ButtonPrimary
+              textContent="Cancelar suscripción"
+              onClick={() => router.push(routes.payment.unsubscribe)}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

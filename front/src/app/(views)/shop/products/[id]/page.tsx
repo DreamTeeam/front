@@ -74,7 +74,7 @@ const ProductDetailPage = async ({ params }: { params: Params }) => {
   return (
       <div className="mb-4">
         <Breadcrumb customItems={customItems} />
-         <ProductDetailClient product={product} sizes={sizes} colors={colors} />
+          <ProductDetailClient product={product} sizes={sizes} colors={colors} />
       </div>
   );
 };

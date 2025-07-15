@@ -50,7 +50,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     try {
       set({ loading: true });
       const user = await getUserApi();
-      console.log("Usuario recibido en fetchUser:", user);
+      // console.log("Usuario recibido en fetchUser:", user);
       set({ user, loading: false });
     } catch (err) {
       console.error("Error al obtener usuario", err);

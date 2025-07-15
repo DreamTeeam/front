@@ -6,4 +6,4 @@ export default function ProfilePage() {
       <Profile />
     </div>
   );
-}
+};

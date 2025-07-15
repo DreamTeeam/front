@@ -21,6 +21,7 @@ export const routes = {
     support: "/user/support",
     chat: "/user/chat",
     companysubscription: "/user/company-subscription",
+    clientsubscription: "/user/client-subscription",
     ordercancel: "/user/ordercancel",
   },
   

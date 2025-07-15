@@ -8,10 +8,10 @@ export default function ClientSubscription() {
 
     return (
         <SubscriptionPlans
-        plans={types}
-        title="Elegí el plan ideal para vos"
-        error={error}
-        loading={loading}
+            plans={types}
+            title="Elegí el plan ideal para vos"
+            error={error}
+            loading={loading}
         />
     );
 };

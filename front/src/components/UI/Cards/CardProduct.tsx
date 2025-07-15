@@ -36,7 +36,7 @@ export const CardProduct: React.FC<ICardProduct> = ({
       <div className="flex flex-col flex-grow mt-4">
         {/* 3. Manejo de Nombres Largos: 'truncate' evita que nombres muy largos rompan
             el layout, añadiendo "..." al final. El 'title' muestra el nombre completo al pasar el mouse. */}
-        <h3 className="text-base font-semibold text-gray-800 truncate" title={name}>
+        <h3 className="text-base font-semibold text-gray-800 truncate uppercase" title={name}>
           {name}
         </h3>
 
